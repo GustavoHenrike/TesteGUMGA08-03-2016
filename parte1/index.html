@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="tabuada">
+<head>
+	<title>Tabuada</title>
+	<script src="angular/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+    <style type="text/css">
+      .jumbotron {
+        width: 400px;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+
+      }
+      .form-control {
+       width: 80px;
+       margin-right: auto;
+       margin-left: auto;
+      }
+
+    </style>
+
+</head>
+<body>
+  <div class="jumbotron">
+	<div ng-controller="tabuadaController">
+		<h3>Digite um numero entre 1 a 10</h3>
+		<input class="form-control" minlength="1" maxlength="2" max="10" ng-model="valor" type="number"></input>
+		</br>
+		<button class="btn btn-danger" ng-click="gerarTabuada(valor)">Gerar Tabuada</button>
+	</div>
+   </div>
+
+
+</body>
+</html>
+
+<script>
+  angular.module("tabuada", []);
+  angular.module("tabuada").controller("tabuadaController", function ($scope) {
+      var x,y;
+  		
+  		$scope.gerarTabuada = function (valor) {
+  		
+  		if (valor<10 || valor>0) {
+  		for (x=0; x<=10; x++) {
+  				var y = $scope.valor*x;
+  				
+
+  				document.write (+x, " X ",+valor," = ",+y, "<br>");
+  			}
+		  		}else{
+		  			alert("Digite um valor entre 1 a 10");
+		  			delete $scope.valor;
+		  		}	
+		  		
+
+  		}
+
+  });
+</script>
